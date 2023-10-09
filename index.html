@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <!-- Script -->
+    <script src="js/script.js" defer></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/img/favicon-32x32.png" type="image/x-icon">
+
     <title>#Frontend Mentor - Página de Notificações</title>
 </head>
 <body>
+    <main class="main">
+        <section class="pagina">
+            <div class="painel">
+                <div class="coluna notificacoes">
+                    <h1 class="titulo">Notifications</h1>
+                    <span class="nun-notificacoes" id="numNotificacoes">3</span>
+                </div>
+
+                <div class="coluna botao">
+                    <input type="checkbox" id="checkLerTudo">
+                    <label for="checkLerTudo" class="btn-ler-tudo">
+                        <span class="texto">Mark all as read</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="lista-notificacoes">
+                <!-- notificação -->
+                <div class="notificacao">
+                    <input type="checkbox" id="checkNotificacao" class="check-notificacao">
+                    <label for="checkNotificacao" class="label-notificacao">
+                        <img src="./assets/img/avatar-mark-webber.webp" alt="foto perfil">
     
+                        <div class="conteudo">
+    
+                            <div class="linha">
+                                <a href="#" lass="user-name" id="userName">Mark Webber</a>
+                                <p class="texto-acao">reacted to your recent post</p>
+                                <a href="#" class="tag link">My first tournament today!</a>
+                                <span class="status"></span>
+                            </div>
+    
+                            <div class="linha">
+                                <span class="tempo">1m</span>
+                                <span class="texto">ago</span>
+                            </div>
+                        </div>
+
+                    </label>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
