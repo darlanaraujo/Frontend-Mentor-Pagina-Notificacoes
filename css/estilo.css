@@ -72,20 +72,92 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 15px;
-  background-color: #f7fafd;
-  border-radius: 10px;
+}
+
+.main .pagina .lista-notificacoes .notificacao .check-notificacao {
+  display: none;
+}
+
+.main .pagina .lista-notificacoes .notificacao .check-notificacao:checked ~ .label-notificacao .status {
+  display: none;
+}
+
+.main .pagina .lista-notificacoes .notificacao .check-notificacao:checked ~ .label-notificacao {
+  background-color: transparent;
 }
 
 .main .pagina .lista-notificacoes .notificacao .label-notificacao {
   display: flex;
+  width: 100%;
+  border-radius: 10px;
   justify-content: flex-start;
-  align-items: center;
   padding: 15px;
   gap: 20px;
+  background-color: #f7fafd;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .perfil {
+  width: 80px;
+  height: 80px;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo {
+  font-size: 19px;
+  margin-top: 10px;
 }
 
 .main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .linha {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .usuario {
+  color: #1c202b;
+  font-weight: bold;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .usuario:hover {
+  color: #0a317b;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .link {
+  color: #1c202b;
+  font-weight: bold;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .link:hover {
+  color: #0a317b;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .tag {
+  color: #0a317b;
+  font-weight: bold;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .acao, .main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .tempo {
+  color: #939dae;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .status::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #f65351;
+  border-radius: 50%;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .comentario {
+  border: solid 1px #939dae;
+  border-radius: 4px;
+  padding: 20px;
+  color: #939dae;
+  cursor: pointer;
+}
+
+.main .pagina .lista-notificacoes .notificacao .label-notificacao .conteudo .comentario:hover {
+  background-color: #dde7ee;
+  border-color: #dde7ee;
 }

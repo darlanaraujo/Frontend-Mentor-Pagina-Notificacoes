@@ -71,29 +71,97 @@
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                padding: 15px;
-                background-color: $azulCinzaClaro;
-                border-radius: 10px;
+                // padding: 15px;
+                // background-color: $azulCinzaClaro;
+                // border-radius: 10px;
 
                 .check-notificacao {
-                    // display: none;
+                    display: none;
+
+                    &:checked ~ .label-notificacao .status {
+                        display: none;
+                    }
+
+                    &:checked ~ .label-notificacao {
+                        background-color: transparent;
+                    }
                 }
 
                 .label-notificacao {
                     display: flex;
+                    width: 100%;
+                    border-radius: 10px;
                     justify-content: flex-start;
-                    align-items: center;
+                    // align-items: baseline;
                     padding: 15px;
                     gap: 20px;
+                    background-color: $azulCinzaClaro;
+
+                    .perfil {
+                        width: 80px;
+                        height: 80px;
+                    }
 
                     .conteudo {
+                        font-size: 19px;
+                        margin-top: 10px;
                         
                         .linha {
                             display: flex;
-                            gap: 15px;
+                            align-items: center;
+                            gap: 10px;
+                            margin-bottom: 10px;
                         }
 
-                        
+
+                        .usuario {
+                            color: $azulEscuro;
+                            font-weight: bold;
+
+                            &:hover {
+                                color: $azul;
+                            }
+                        }
+
+                        .link {
+                            color: $azulEscuro;
+                            font-weight: bold;
+
+                            &:hover {
+                                color: $azul;
+                            }
+                        }
+
+                        .tag {
+                            color: $azul;
+                            font-weight: bold;
+                        }
+
+                        .acao, .tempo {
+                            color: $azulCinza;
+                        }
+
+                        .status::before {
+                            content: '';
+                            display: block;
+                            width: 10px;
+                            height: 10px;
+                            background-color: $vermelho;
+                            border-radius: 50%;
+                        }
+
+                        .comentario {
+                            border: solid 1px $azulCinza;
+                            border-radius: 4px;
+                            padding: 20px;
+                            color: $azulCinza;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: $azulCinzaMedioClaro;
+                                border-color: $azulCinzaMedioClaro;
+                            }
+                        }
 
                     }
 
