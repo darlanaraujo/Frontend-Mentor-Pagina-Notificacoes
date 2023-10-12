@@ -23,6 +23,12 @@
   padding: 30px;
 }
 
+@media (max-width: 1000px) {
+  .main .pagina {
+    width: 80%;
+  }
+}
+
 .main .pagina .painel {
   display: flex;
   justify-content: space-between;

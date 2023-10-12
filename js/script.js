@@ -82,6 +82,8 @@ const dados = [
 
 // Elementos DOM
 const listaNotificacoes = document.querySelector('#listaNotificacoes');
+const numNotificacoes = document.querySelector('#numNotificacoes');
+
 
 const criarElemento = (tag, classe, atributo = null, tipo = null) => {
     const elemento = document.createElement(tag);
@@ -96,7 +98,7 @@ const criarCheck = (status) => {
     const check = document.createElement('input');
 
     check.setAttribute('type', 'checkbox');
-    // check.classList.add('check-notificacao');
+    check.classList.add('check-notificacao');
 
     if(atributo === 'checked') {
         check.setAttribute('checked', '');
@@ -113,9 +115,16 @@ const criarEstrutura = () => {
         const label = criarElemento('label', 'label-notificacao', 'for', `checkNotificacao${index}`);
 
         
+        
         // Insere os elementos filhos no elemento notificacao
         notificacao.appendChild(input);
         notificacao.appendChild(label);
+
+        label.addEventListener('click', (target) => {
+            // target.removeAttribute('checked');
+            // console.log(target);
+            input.toggleAttribute('checked');
+        });
         
         // Insere os elementos filhos no elemento label
         const perfil = criarElemento('img', 'perfil', 'src', item.perfil);
@@ -152,9 +161,28 @@ const criarEstrutura = () => {
             linha.appendChild(tag);
         }
 
+        const status = criarElemento('span', 'status');
+
+        linha.appendChild(status);
+
         // Insere todos os elementos no elemento principal
         listaNotificacoes.appendChild(notificacao);
     });
 };
 
 criarEstrutura();
+
+const notificacoes = document.querySelectorAll('.check-notificacao');
+
+setInterval(() => {
+    let cont = 0;
+    notificacoes.forEach((item) => {
+        if(!item.getAttributeNames().includes('checked')) {
+            cont++;
+        }
+        
+        // console.log(item.getAttributeNames());
+    });
+    numNotificacoes.innerHTML = cont;
+    
+}, 1);
