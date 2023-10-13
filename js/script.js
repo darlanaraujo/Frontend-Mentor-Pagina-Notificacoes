@@ -83,7 +83,7 @@ const dados = [
 // Elementos DOM
 const listaNotificacoes = document.querySelector('#listaNotificacoes');
 const numNotificacoes = document.querySelector('#numNotificacoes');
-
+const btnLerTudo = document.querySelector('#btnLerTudo');
 
 const criarElemento = (tag, classe, atributo = null, tipo = null) => {
     const elemento = document.createElement(tag);
@@ -120,10 +120,11 @@ const criarEstrutura = () => {
         notificacao.appendChild(input);
         notificacao.appendChild(label);
 
+        // Evento que monitora o click no label e adiciona ou remove o atributo checked.
         label.addEventListener('click', (target) => {
-            // target.removeAttribute('checked');
-            // console.log(target);
+            target.preventDefault();
             input.toggleAttribute('checked');
+
         });
         
         // Insere os elementos filhos no elemento label
@@ -165,6 +166,32 @@ const criarEstrutura = () => {
 
         linha.appendChild(status);
 
+        // Insere os elementos filhos no elemento conteudo
+        const linha2 = criarElemento('div', 'linha');
+        const tempo = criarElemento('span', 'tempo');
+        tempo.innerHTML = item.tempo;
+
+        linha2.appendChild(tempo);
+
+        conteudo.appendChild(linha2);
+
+        // Verifica se há comentário e se houver cria o elemento;
+        if(!item.comentario == '') {
+            const linha3 = criarElemento('div', 'linha');
+            const comentario = criarElemento('p', 'comentario');
+            
+            comentario.innerHTML = item.comentario;
+            linha3.appendChild(comentario);
+            conteudo.appendChild(linha3);
+        }
+
+        // Insere os elementos filhos no elemento notificacao
+        if(!item.foto == '') {
+            const foto = criarElemento('img', 'foto', 'src', item.foto);
+
+            notificacao.appendChild(foto);
+        }
+
         // Insere todos os elementos no elemento principal
         listaNotificacoes.appendChild(notificacao);
     });
@@ -172,6 +199,7 @@ const criarEstrutura = () => {
 
 criarEstrutura();
 
+// Função que fica monitorando os elementos para identificar a contagem de notificações lidas ou não lidas.
 const notificacoes = document.querySelectorAll('.check-notificacao');
 
 setInterval(() => {
@@ -180,9 +208,19 @@ setInterval(() => {
         if(!item.getAttributeNames().includes('checked')) {
             cont++;
         }
-        
-        // console.log(item.getAttributeNames());
     });
+
+    btnLerTudo.addEventListener('click', (event) => {
+        event.preventDefault();
+        if(cont > 0) {
+
+            notificacoes.forEach((item) => {
+                item.setAttribute('checked', '');
+            });
+        }
+    });
+
     numNotificacoes.innerHTML = cont;
     
 }, 1);
+

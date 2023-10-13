@@ -1,6 +1,4 @@
 @import 'reset';
-@import 'cores';
-@import 'mobile';
 
 .main {
     width: 100%;
@@ -11,13 +9,24 @@
     background-color: $azulCinzaMedioClaro;
 
     .pagina {
-        width: 60%;
+        width: 70%;
+        max-height: 90%;
         background-color: $branco;
         border-radius: 10px;
         padding: 30px;
+        overflow-y: auto;
+        transition: all .5s;
+        
+
+        @include tablet {
+            width: 80%;
+            padding: 20px 10px;
+        }
 
         @include mobile {
-            width: 80%;
+            width: 100%;
+            height: 100%;
+            max-height: 100%;
         }
 
         .painel {
@@ -32,6 +41,13 @@
 
                 &.notificacoes {
                     gap: 20px;
+
+                    .titulo {
+                        @include mobile {
+                            font-size: 14px !important;
+                            
+                        }
+                    }
                     
                     .nun-notificacoes {
                         width: max-content;
@@ -45,18 +61,14 @@
 
                 &.botao {
 
-                    input {
-                        display: none;
-
-                        // &:checked + .btn-ler-tudo {
-                        //     color: red;
-                        // }
-                    }
-
                     .btn-ler-tudo {
                         font-size: 18px;
                         color: $azulCinzaEscuro;
                         cursor: pointer;
+
+                        @include mobile {
+                            font-size: 14px;
+                        }
 
                         &:hover {
                             color: $azul;
@@ -76,9 +88,6 @@
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                // padding: 15px;
-                // background-color: $azulCinzaClaro;
-                // border-radius: 10px;
 
                 .check-notificacao {
                     display: none;
@@ -102,9 +111,19 @@
                     gap: 20px;
                     background-color: $azulCinzaClaro;
 
+                    @include mobile {
+                        padding: 10px;
+                        gap: 10px;
+                    }
+
                     .perfil {
                         width: 80px;
                         height: 80px;
+
+                        @include mobile {
+                            width: 50px;
+                            height: 50px;
+                        }
                     }
 
                     .conteudo {
@@ -116,6 +135,28 @@
                             align-items: center;
                             gap: 10px;
                             margin-bottom: 10px;
+                            
+                            &:nth-child(1) {
+                                @include tablet {
+                                    display: grid;
+                                    grid-template-columns: max-content max-content max-content;
+                                    
+                                    .status {
+                                        grid-column-start: 3;
+                                        grid-row: 1;
+                                    }
+
+                                    .link, .tag {
+                                        grid-column-start: 1;
+                                        grid-column-end: 3;
+                                        grid-row: 2;
+                                    }
+                                }
+
+                                @include mobile {
+                                    gap: 5px;
+                                }
+                            }
                         }
 
 
@@ -170,6 +211,15 @@
 
                     }
 
+                }
+
+                .foto {
+                    width: 80px;
+                    cursor: pointer;
+
+                    @include mobile {
+                        width: 40px;
+                    }
                 }
             }
         }
